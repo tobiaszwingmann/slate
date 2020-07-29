@@ -20,11 +20,34 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+> <strong> JUST GETTING STARTED? </strong><br />
+Check out our <a href="https://www.rapyd.ai/help-center/quickstart-guide"> quickstart guide</a>.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+> <strong> NOT A DEVELOPER? </strong> <br /> 
+Sign in to your <a href="https://www.rapyd.ai/app/start">RAPYD.AI dashboard</a> to get started with apps. 
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+> RAPYD.AI uses the following base URL
+
+```console
+https://api.rapyd.ai
+```
+
+RAPYD.AI is an API for AI services. Some people call it AI-as-a-Service. Some call it AI platform. We don't mind how you call it, but here's what RAPYD.AI does in plain English:
+
+<aside class="notice">
+<strong>RAPYD.AI gives you a simple API interface to access state-of-the-art AI services from leading providers.</strong>
+</aside>
+
+Let's break this statement down:
+
+##A simple API interface
+The RAPYD.AI API is organized around REST. Our API accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs. You can send texts, images, videos or audio files as inputs. You can even use our API to train and deploy custom models (Pro Plan).
+
+##State-of-the-art AI services
+We ensure that the AI services that we provide belong the best of their class. You should focus on your use-case and your AI application and not whether another AI service might do a better job. It might be that another AI achieves better results, especially in very specific or niche settings. But generally speaking, the AI services that we provide here will give you a good baseline to start with.
+
+##Leading providers
+All AI services on RAPYD.AI are production ready. We don't want you to build your prototype using some AI service that does not scale. When you decide to go into production, you can rely that the service provider in the backend can handle your AI production workloads.
 
 # Authentication
 

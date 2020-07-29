@@ -572,7 +572,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: $main-text;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
