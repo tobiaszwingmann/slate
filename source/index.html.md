@@ -2,10 +2,12 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - javascript: JavaScript
+  - python: Python
+  - r: R
+  - shell: cURL
+
+  
 
 toc_footers:
   - <a href='https://www.rapyd.ai/app/sign-up/'>Sign Up for RAPYD.AI</a>
@@ -53,7 +55,7 @@ All AI services on RAPYD.AI are production ready. We don't want you to build you
 
 > To authorize, use this code:
 
-```ruby
+```r
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -93,7 +95,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ## Get All Kittens
 
-```ruby
+```r
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -159,7 +161,7 @@ Remember — a happy kitten is an authenticated kitten!
 
 ## Get a Specific Kitten
 
-```ruby
+```r
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -213,7 +215,7 @@ ID | The ID of the kitten to retrieve
 
 ## Delete a Specific Kitten
 
-```ruby
+```r
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
