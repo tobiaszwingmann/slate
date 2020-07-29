@@ -22,7 +22,7 @@ code_clipboard: true
 
 # Introduction
 
-> <strong> JUST GETTING STARTED? </strong><br />
+> <strong> GETTING STARTED? </strong><br />
 Check out our <a href="https://www.rapyd.ai/help-center/quickstart-guide"> quickstart guide</a>.
 
 > <strong> NOT A DEVELOPER? </strong> <br /> 
