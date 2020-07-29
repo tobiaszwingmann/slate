@@ -30,6 +30,12 @@ under the License.
   -webkit-text-size-adjust: 100%
 }
 
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -88,9 +94,9 @@ html, body {
 
   }
 
-  .logo img {
+  img.logo {
   width: 160px;
-  height: 49px;
+  height: 25px;
   }
 
   &>.search {
@@ -202,10 +208,10 @@ html, body {
   .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
-    border-top: 1px dashed $nav-footer-border-color;
+    border-top: 1px solid $nav-footer-border-color;
 
     li,a {
-      color: $nav-text;
+      color: $main-text;
       text-decoration: none;
     }
 
@@ -217,6 +223,14 @@ html, body {
       font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
+      font-size: 1em;
+      line-height: 1.7;
+      text-decoration: none;
+      background-color: #ffd804;
+      margin: 2em 2em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      border-radius: 8px;
     }
   }
 }
