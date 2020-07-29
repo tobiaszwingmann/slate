@@ -26,9 +26,9 @@ Check out our <a href="https://www.rapyd.ai/help-center/quickstart-guide"> quick
 > <strong> NOT A DEVELOPER? </strong> <br /> 
 Sign in to your <a href="https://www.rapyd.ai/app/start">RAPYD.AI dashboard</a> to get started with apps. 
 
-> RAPYD.AI uses the following base URL
+> Base URL:
 
-```console
+```markdown
 https://api.rapyd.ai
 ```
 
