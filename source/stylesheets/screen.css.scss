@@ -24,6 +24,12 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 
+@import url("https://fonts.googleapis.com/css?family=Lato");html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
 html, body {
   color: $main-text;
   padding: 0;
@@ -55,12 +61,13 @@ html, body {
   position: fixed;
   z-index: 30;
   top: 0;
-  left: 0;
+  //left: 0;
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
+  border-right: 1px solid #ccc;
 
   // language selector for mobile devices
   .lang-selector {
@@ -76,6 +83,9 @@ html, body {
     display: block;
     max-width: 100%;
     margin-bottom: $logo-margin;
+    margin-top: $logo-margin-top;
+    margin-left: $logo-margin-left;
+
   }
 
   &>.search {
@@ -83,21 +93,27 @@ html, body {
 
     input {
       background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      height: 34px;
+      padding: 3px 0px 0px 22px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgba(20, 20, 20, 0.1);
+      border-radius: 4px;
+      -webkit-transition: border 200ms ease;
+      transition: border 200ms ease;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
-      outline: none;
       color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
     }
 
     &:before {
       position: absolute;
-      top: 17px;
-      left: $nav-padding;
+      top: 22px;
+      left: 37px;
       color: $nav-text;
       @extend %icon-search;
     }
@@ -149,12 +165,16 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+    margin-right: 0.2em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    border-radius: 4px;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -166,12 +186,12 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    font-weight: 500;
+    //font-weight: 500;
   }
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .toc-footer {
@@ -352,8 +372,8 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    //border-top: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
   }
 
@@ -452,7 +472,7 @@ html, body {
   code {
     background-color: rgba(0,0,0,0.05);
     padding: 3px;
-    border-radius: 3px;
+    //border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
   }
@@ -517,8 +537,8 @@ html, body {
   }
 
   pre, blockquote {
-    background-color: $code-bg;
-    color: #fff;
+    //background-color: $code-bg;
+    color:  #f8f8f8;
 
     margin: 0;
     width: $examples-width;
@@ -543,14 +563,19 @@ html, body {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em $main-padding;
+    padding: 1em 2em;
+    background-color: $code-bg;
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+    border-radius: 6px;
   }
 
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
-      color: #eee;
+      padding: $code-annotation-padding 10%;
+      color: $main-text;
     }
   }
 }
@@ -612,10 +637,14 @@ html, body {
 }
 
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #909090;
+  color: #f8f8f8;
 }
 
 .highlight, .highlight .w {
+  background-color: #f8f8f8;
+}
+
+.highlight .w {
   background-color: $code-bg;
 }
 
