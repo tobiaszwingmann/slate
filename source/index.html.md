@@ -14,6 +14,7 @@ toc_footers:
 
 includes:
   - errors
+  - nlp
 
 search: true
 
@@ -42,13 +43,13 @@ RAPYD.AI is an API for AI services. Some people call it AI-as-a-Service. Some ca
 
 Let's break this statement down:
 
-##A simple API interface
+<strong>A simple API interface</strong>
 The RAPYD.AI API is organized around REST. Our API accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs. You can send texts, images, videos or audio files as inputs. You can even use our API to train and deploy custom models (Pro Plan).
 
-##State-of-the-art AI services
+<strong>State-of-the-art AI services</strong>
 We ensure that the AI services that we provide belong the best of their class. You should focus on your use-case and your AI application and not whether another AI service might do a better job. It might be that another AI achieves better results, especially in very specific or niche settings. But generally speaking, the AI services that we provide here will give you a good baseline to start with.
 
-##Leading providers
+<strong>Leading providers</strong>
 All AI services on RAPYD.AI are production ready. We don't want you to build your prototype using some AI service that does not scale. When you decide to go into production, you can rely that the service provider in the backend can handle your AI production workloads.
 
 # Authentication
