@@ -13,8 +13,9 @@ toc_footers:
   - <a href='https://www.rapyd.ai/app/sign-up/'>Sign Up for RAPYD.AI</a>
 
 includes:
-  - errors
   - nlp
+  - vision
+  - errors
 
 search: true
 
@@ -54,213 +55,106 @@ All AI services on RAPYD.AI are production ready. We don't want you to build you
 
 # Authentication
 
-> To authorize, use this code:
+The RAPYD.AI API uses a combination of your unique, permanent account ID and a temporary access token to authenticate requests. 
 
-```r
-require 'kittn'
+You will get an Account ID when you <a href="https://www.rapyd.ai/app/sign-up/", target = "_blank"> sign up here</a>. We will find your Account-ID in your welcome e-mail as well as in your <a href="https://www.rapyd.ai/app/start/", target = "_blank"> RAPYD.AI Dashboard.</a>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+You can generate a token as often as you like either through your <a href="https://www.rapyd.ai/app/start/", target = "_blank"> RAPYD.AI Dashboard</a> or programmatically using the following API end point:
 
-```python
-import kittn
+`POST /v1/user/token`
 
-api = kittn.authorize('meowmeowmeow')
-```
+A token is valid for 60 minutes.
+
+> To get a token, use this code:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+
+curl --location --request POST 'https://api.rapyd.ai/v1/user/token' \
+--header 'Content-Type: application/json' \
+--header 'Content-Type: text/plain' \
+--data-raw '{
+	"email":"your-email",
+	"password":"your-password"
+}
+'
+
 ```
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Content-Type", "text/plain");
+
+var raw = "{\n	\"email\":\"your-email\",\n	\"password\":\"your-password\"\n}\n";
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://api.rapyd.ai/v1/user/token", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+  
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+```python
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+import requests
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+url = "https://api.rapyd.ai/v1/user/token"
 
-`Authorization: meowmeowmeow`
+payload = "{\n\t\"email\":\"your-email\",\n\t\"password\":\"your-password\"\n}\n"
+headers = {
+  'Content-Type': 'application/json',
+  'Content-Type': 'text/plain'
+}
+
+response = requests.request("POST", url, headers=headers, data = payload)
+
+print(response.text.encode('utf8'))
+
+```
+
+```r
+library(httr)
+
+url <- "https://api.rapyd.ai/v1/user/token"
+payload <- list(email = "your-email", 
+           password = "your-password")
+
+# Get results
+response <- POST(url, body = payload, encode = "json")
+result <- content(response, "parsed")
+```
+
+> Make sure to replace `your-email` and `your-password`with your password.
+
+> <strong>Never store your password inside your code! </strong> If you are not sure how to manage your passwords safely, use our dashboard to generate a token.
+
+Authentication to the API is performed via Bearer Token Usage. 
+
+RAPYD.AI expects the Account ID and the Token to be included in all API requests to the server in a header that looks like the following:
+
+`'ACCOUNT-ID: your-accountid'`
+`'Authorization: Bearer your-token'`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>your-token</code> and <code>your-accountid</code> with your personal API credentials.
 </aside>
 
-# Kittens
+Never provide your RAPYD.AI login password via the API except for the endpoint `/v1/user/token` . 
 
-## Get All Kittens
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
-```r
-require 'kittn'
+##Credits
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+Every successful API request will deduct 1 credit from your RAPYD.AI credit balance.
 
-```python
-import kittn
+A successful API request is defined as every request that yields a successful result object.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```r
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```r
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+Errors, rejects or timeouts will not affect your credits balance. 

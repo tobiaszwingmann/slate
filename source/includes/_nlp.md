@@ -363,7 +363,7 @@ Each key phrase comes with a score that indicates the level of confidence for th
 
 ### HTTP Request
 
-`POST /v1/nlp/entities`
+`POST /v1/nlp/keyphrase`
 
 ```shell
 
